@@ -1,0 +1,19 @@
+{
+  "functions": [
+    {
+      "description": "Chuyển đổi số tiền thành chữ tiếng Việt",
+      "id": "VND",
+      "name": "VND",
+      "parameters": [
+        {
+          "description": "Số tiền cần chuyển đổi",
+          "name": "number",
+          "type": "number"
+        }
+      ],
+      "result": {
+        "type": "string"
+      }
+    }
+  ]
+}
