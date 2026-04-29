@@ -6,11 +6,11 @@
           xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
           xsi:type="TaskPaneApp">
 
-  <Id>d1c646b9-4a4b-48c0-9937-2901a1c22998</Id>
-  <Version>1.0.0.2</Version>
+  <Id>ebbe7834-ef5f-439b-a595-1706fdda09b7</Id>
+  <Version>1.0.0.0</Version>
   <ProviderName>IT Admin Dept</ProviderName>
   <DefaultLocale>vi-VN</DefaultLocale>
-  <DisplayName DefaultValue="Đọc Số VNĐ" />
+  <DisplayName DefaultValue="Đọc Số VNĐ (Bản Mới)" />
   <Description DefaultValue="Công cụ tự động chuyển đổi số tiền thành chữ tiếng Việt." />
   <IconUrl DefaultValue="https://nlehoang.github.io/DocSo/assets/icon-32.png" />
   <HighResolutionIconUrl DefaultValue="https://nlehoang.github.io/DocSo/assets/icon-64.png" />
