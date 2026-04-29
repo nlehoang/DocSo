@@ -1,4 +1,4 @@
-Office.onReady((info) => {
+Office.onReady(function (info) {
     if (info.host === Office.HostType.Excel) {
         document.getElementById("sideload-msg").style.display = "none";
         document.getElementById("app-body").style.display = "flex";
@@ -7,38 +7,45 @@ Office.onReady((info) => {
 });
 
 async function run() {
-    let status = document.getElementById("status-msg");
+    var status = document.getElementById("status-msg");
     status.innerText = "";
+    status.className = "ms-font-s";
+
     try {
-        await Excel.run(async (context) => {
+        await Excel.run(async function (context) {
             // Lấy vùng dữ liệu đang bôi đen
-            let range = context.workbook.getSelectedRange();
-            range.load("values, rowCount");
+            var range = context.workbook.getSelectedRange();
+            range.load("values,columnCount");
             await context.sync();
 
-            let values = range.values;
-            let outputValues = [];
+            var values = range.values;
+            var colCount = range.columnCount;
+            var outputValues = [];
 
-            // Duyệt qua từng dòng, dịch số và lưu vào mảng kết quả
-            for (let i = 0; i < values.length; i++) {
-                let cellValue = values[i][0];
-                if (typeof cellValue === "number" && cellValue !== null) {
-                    outputValues.push([docSoTienVND(cellValue)]);
-                } else {
-                    outputValues.push([""]); // Nếu không phải số thì để trống
+            // Duyệt qua từng dòng
+            for (var i = 0; i < values.length; i++) {
+                var row = [];
+                for (var j = 0; j < colCount; j++) {
+                    var cellValue = values[i][j];
+                    if (typeof cellValue === "number") {
+                        row.push(docSoTienVND(cellValue));
+                    } else {
+                        row.push(""); // Nếu không phải số thì để trống
+                    }
                 }
+                outputValues.push(row);
             }
 
-            // Ghi kết quả ra cột ngay bên phải vùng bôi đen
-            let targetRange = range.getOffsetRange(0, 1);
+            // Ghi kết quả ra vùng ngay bên phải vùng bôi đen
+            var targetRange = range.getOffsetRange(0, colCount);
             targetRange.values = outputValues;
-            
-            status.style.color = "#107c10"; // Green
+
+            status.className = "ms-font-s status-success";
             status.innerText = "Đã chuyển đổi thành công!";
             await context.sync();
         });
     } catch (error) {
-        status.style.color = "#d13438"; // Red
+        status.className = "ms-font-s status-error";
         status.innerText = "Lỗi: " + error.message;
         console.error(error);
     }
@@ -51,36 +58,36 @@ async function run() {
  */
 function docSoTienVND(number) {
     if (number === 0) return "Không đồng";
-    
-    const units = ["không", "một", "hai", "ba", "bốn", "năm", "sáu", "bảy", "tám", "chín"];
-    const blocks = ["", "nghìn", "triệu", "tỷ", "nghìn tỷ", "triệu tỷ"];
-    
+
+    var units = ["không", "một", "hai", "ba", "bốn", "năm", "sáu", "bảy", "tám", "chín"];
+    var blocks = ["", "nghìn", "triệu", "tỷ", "nghìn tỷ", "triệu tỷ"];
+
     // Làm tròn và lấy giá trị tuyệt đối
-    let str = Math.abs(Math.round(number)).toString();
-    let isNegative = number < 0;
-    
+    var str = Math.abs(Math.round(number)).toString();
+    var isNegative = number < 0;
+
     // Thêm số 0 vào đầu để đủ các nhóm 3 chữ số
     while (str.length % 3 !== 0) str = "0" + str;
-    
-    let words = [];
-    let blockCount = str.length / 3;
-    
-    for (let i = 0; i < blockCount; i++) {
-        let block = str.substring(i * 3, i * 3 + 3);
-        let tram = parseInt(block[0]);
-        let chuc = parseInt(block[1]);
-        let donVi = parseInt(block[2]);
-        
-        // Nếu cả nhóm là 000 thì bỏ qua (trừ khi là nhóm duy nhất)
+
+    var words = [];
+    var blockCount = str.length / 3;
+
+    for (var i = 0; i < blockCount; i++) {
+        var block = str.substring(i * 3, i * 3 + 3);
+        var tram = parseInt(block[0], 10);
+        var chuc = parseInt(block[1], 10);
+        var donVi = parseInt(block[2], 10);
+
+        // Nếu cả nhóm là 000 thì bỏ qua
         if (tram === 0 && chuc === 0 && donVi === 0) continue;
-        
-        let blockWords = [];
-        
+
+        var blockWords = [];
+
         // Xử lý hàng trăm
         if (tram > 0 || (blockCount > 1 && i > 0)) {
             blockWords.push(units[tram] + " trăm");
         }
-        
+
         // Xử lý hàng chục
         if (chuc === 0 && donVi > 0 && (tram > 0 || (blockCount > 1 && i > 0))) {
             blockWords.push("lẻ");
@@ -89,7 +96,7 @@ function docSoTienVND(number) {
         } else if (chuc > 1) {
             blockWords.push(units[chuc] + " mươi");
         }
-        
+
         // Xử lý hàng đơn vị (các trường hợp đặc biệt: mốt, lăm, tư)
         if (donVi === 1 && chuc > 1) {
             blockWords.push("mốt");
@@ -97,24 +104,22 @@ function docSoTienVND(number) {
             blockWords.push("lăm");
         } else if (donVi === 4 && chuc > 1) {
             blockWords.push("tư");
-        } else if (donVi > 0 || (chuc === 0 && tram === 0 && blockCount === 1)) {
-            // Không lặp lại nếu đã xử lý ở trên
-            if (!(donVi === 1 && chuc > 1) && !(donVi === 5 && chuc > 0) && !(donVi === 4 && chuc > 1)) {
-                 blockWords.push(units[donVi]);
-            }
+        } else if (donVi > 0) {
+            blockWords.push(units[donVi]);
         }
-        
+
         // Thêm đơn vị khối (nghìn, triệu, tỷ...)
-        if (blockCount - 1 - i >= 0) {
-            blockWords.push(blocks[blockCount - 1 - i]);
+        var blockIndex = blockCount - 1 - i;
+        if (blockIndex > 0 && blockIndex < blocks.length) {
+            blockWords.push(blocks[blockIndex]);
         }
         words.push(blockWords.join(" "));
     }
-    
+
     // Kết hợp các nhóm lại
-    let result = words.join(" ").trim().replace(/\s+/g, ' '); 
+    var result = words.join(" ").trim().replace(/\s+/g, " ");
     if (isNegative) result = "Âm " + result;
-    
+
     // Viết hoa chữ cái đầu và thêm "đồng"
     return result.charAt(0).toUpperCase() + result.slice(1) + " đồng";
 }
