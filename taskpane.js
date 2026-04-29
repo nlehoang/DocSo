@@ -7,6 +7,8 @@ Office.onReady((info) => {
 });
 
 async function run() {
+    let status = document.getElementById("status-msg");
+    status.innerText = "";
     try {
         await Excel.run(async (context) => {
             // Lấy vùng dữ liệu đang bôi đen
@@ -31,23 +33,33 @@ async function run() {
             let targetRange = range.getOffsetRange(0, 1);
             targetRange.values = outputValues;
             
+            status.style.color = "#107c10"; // Green
+            status.innerText = "Đã chuyển đổi thành công!";
             await context.sync();
         });
     } catch (error) {
+        status.style.color = "#d13438"; // Red
+        status.innerText = "Lỗi: " + error.message;
         console.error(error);
     }
 }
 
-// Logic chuyển số thành chữ tiếng Việt
+/**
+ * Logic chuyển đổi số thành chữ tiếng Việt
+ * @param {number} number - Con số cần chuyển đổi
+ * @returns {string} - Chuỗi văn bản tương ứng (ví dụ: "Một trăm nghìn đồng")
+ */
 function docSoTienVND(number) {
     if (number === 0) return "Không đồng";
     
     const units = ["không", "một", "hai", "ba", "bốn", "năm", "sáu", "bảy", "tám", "chín"];
     const blocks = ["", "nghìn", "triệu", "tỷ", "nghìn tỷ", "triệu tỷ"];
     
+    // Làm tròn và lấy giá trị tuyệt đối
     let str = Math.abs(Math.round(number)).toString();
     let isNegative = number < 0;
     
+    // Thêm số 0 vào đầu để đủ các nhóm 3 chữ số
     while (str.length % 3 !== 0) str = "0" + str;
     
     let words = [];
@@ -59,14 +71,17 @@ function docSoTienVND(number) {
         let chuc = parseInt(block[1]);
         let donVi = parseInt(block[2]);
         
+        // Nếu cả nhóm là 000 thì bỏ qua (trừ khi là nhóm duy nhất)
         if (tram === 0 && chuc === 0 && donVi === 0) continue;
         
         let blockWords = [];
         
+        // Xử lý hàng trăm
         if (tram > 0 || (blockCount > 1 && i > 0)) {
             blockWords.push(units[tram] + " trăm");
         }
         
+        // Xử lý hàng chục
         if (chuc === 0 && donVi > 0 && (tram > 0 || (blockCount > 1 && i > 0))) {
             blockWords.push("lẻ");
         } else if (chuc === 1) {
@@ -75,6 +90,7 @@ function docSoTienVND(number) {
             blockWords.push(units[chuc] + " mươi");
         }
         
+        // Xử lý hàng đơn vị (các trường hợp đặc biệt: mốt, lăm, tư)
         if (donVi === 1 && chuc > 1) {
             blockWords.push("mốt");
         } else if (donVi === 5 && chuc > 0) {
@@ -82,17 +98,23 @@ function docSoTienVND(number) {
         } else if (donVi === 4 && chuc > 1) {
             blockWords.push("tư");
         } else if (donVi > 0 || (chuc === 0 && tram === 0 && blockCount === 1)) {
-            if (!(donVi === 1 && chuc > 1) && !(donVi === 5 && chuc > 0)) {
+            // Không lặp lại nếu đã xử lý ở trên
+            if (!(donVi === 1 && chuc > 1) && !(donVi === 5 && chuc > 0) && !(donVi === 4 && chuc > 1)) {
                  blockWords.push(units[donVi]);
             }
         }
         
-        blockWords.push(blocks[blockCount - 1 - i]);
+        // Thêm đơn vị khối (nghìn, triệu, tỷ...)
+        if (blockCount - 1 - i >= 0) {
+            blockWords.push(blocks[blockCount - 1 - i]);
+        }
         words.push(blockWords.join(" "));
     }
     
+    // Kết hợp các nhóm lại
     let result = words.join(" ").trim().replace(/\s+/g, ' '); 
     if (isNegative) result = "Âm " + result;
     
+    // Viết hoa chữ cái đầu và thêm "đồng"
     return result.charAt(0).toUpperCase() + result.slice(1) + " đồng";
 }
