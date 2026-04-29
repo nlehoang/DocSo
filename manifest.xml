@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<OfficeApp 
-          xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" 
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-          xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" 
+<OfficeApp
+          xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
           xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
           xsi:type="TaskPaneApp">
-  
+
   <Id>d1c646b9-4a4b-48c0-9937-2901a1c22998</Id>
   <Version>1.0.0.0</Version>
   <ProviderName>IT Admin Dept</ProviderName>
   <DefaultLocale>vi-VN</DefaultLocale>
   <DisplayName DefaultValue="Đọc Số VNĐ" />
   <Description DefaultValue="Công cụ tự động chuyển đổi số tiền thành chữ tiếng Việt." />
-  
+  <IconUrl DefaultValue="https://nlehoang.github.io/DocSo/assets/icon-32.png" />
+  <HighResolutionIconUrl DefaultValue="https://nlehoang.github.io/DocSo/assets/icon-64.png" />
+  <SupportUrl DefaultValue="https://github.com/nlehoang/DocSo" />
+
   <Hosts>
     <Host Name="Workbook" />
   </Hosts>
@@ -20,21 +23,36 @@
     <SourceLocation DefaultValue="https://nlehoang.github.io/DocSo/index.html" />
   </DefaultSettings>
   <Permissions>ReadWriteDocument</Permissions>
-  
+
   <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
     <Hosts>
       <Host xsi:type="Workbook">
         <DesktopFormFactor>
+          <GetStarted>
+            <Title resid="GetStarted.Title" />
+            <Description resid="GetStarted.Description" />
+            <LearnMoreUrl resid="Taskpane.Url" />
+          </GetStarted>
           <ExtensionPoint xsi:type="PrimaryCommandSurface">
-            <CustomTab id="TabHome">
-              <Group id="VNDGroup">
-                <Label DefaultValue="Công cụ Kế toán" />
+            <CustomTab id="DocSoTab">
+              <Group id="DocSoGroup">
+                <Label resid="Group.Label" />
+                <Icon>
+                  <bt:Image size="16" resid="Icon.16x16" />
+                  <bt:Image size="32" resid="Icon.32x32" />
+                  <bt:Image size="80" resid="Icon.80x80" />
+                </Icon>
                 <Control xsi:type="Button" id="TaskpaneButton">
-                  <Label DefaultValue="Đọc Số VNĐ" />
+                  <Label resid="Button.Label" />
                   <Supertip>
-                    <Title DefaultValue="Chuyển Số Sang Chữ" />
-                    <Description DefaultValue="Mở bảng điều khiển để dịch số thành chữ." />
+                    <Title resid="Button.Supertip.Title" />
+                    <Description resid="Button.Supertip.Description" />
                   </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16x16" />
+                    <bt:Image size="32" resid="Icon.32x32" />
+                    <bt:Image size="80" resid="Icon.80x80" />
+                  </Icon>
                   <Action xsi:type="ShowTaskpane">
                     <TaskpaneId>ButtonId1</TaskpaneId>
                     <SourceLocation resid="Taskpane.Url" />
@@ -47,9 +65,24 @@
       </Host>
     </Hosts>
     <Resources>
+      <bt:Images>
+        <bt:Image id="Icon.16x16" DefaultValue="https://nlehoang.github.io/DocSo/assets/icon-16.png" />
+        <bt:Image id="Icon.32x32" DefaultValue="https://nlehoang.github.io/DocSo/assets/icon-32.png" />
+        <bt:Image id="Icon.80x80" DefaultValue="https://nlehoang.github.io/DocSo/assets/icon-80.png" />
+      </bt:Images>
       <bt:Urls>
         <bt:Url id="Taskpane.Url" DefaultValue="https://nlehoang.github.io/DocSo/index.html" />
       </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="GetStarted.Title" DefaultValue="Đọc Số VNĐ" />
+        <bt:String id="Group.Label" DefaultValue="Công cụ Kế toán" />
+        <bt:String id="Button.Label" DefaultValue="Đọc Số VNĐ" />
+        <bt:String id="Button.Supertip.Title" DefaultValue="Chuyển Số Sang Chữ" />
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="GetStarted.Description" DefaultValue="Bôi đen cột số tiền rồi bấm nút để chuyển thành chữ tiếng Việt." />
+        <bt:String id="Button.Supertip.Description" DefaultValue="Mở bảng điều khiển để dịch số thành chữ tiếng Việt." />
+      </bt:LongStrings>
     </Resources>
   </VersionOverrides>
 </OfficeApp>
