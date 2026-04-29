@@ -14,15 +14,6 @@
       "result": {
         "type": "string"
       }
-    },
-    {
-      "description": "Test function to check if the runtime is working",
-      "id": "PING",
-      "name": "PING",
-      "parameters": [],
-      "result": {
-        "type": "string"
-      }
     }
   ]
 }
