@@ -17,10 +17,20 @@ body {
     text-align: center;
 }
 
+/* Mặc định cho theme sáng */
 .ms-welcome__main p {
     line-height: 1.5;
     margin-bottom: 20px;
-    color: #323130;
+    color: #2d1c0c;
+}
+
+/* Tự động đổi chữ thành trắng nếu Excel/OS dùng theme tối */
+@media (prefers-color-scheme: dark) {
+
+    .ms-welcome__main p,
+    .ms-welcome__main h2 {
+        color: #ffffff;
+    }
 }
 
 #run {

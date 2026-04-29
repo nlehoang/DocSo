@@ -14,6 +14,111 @@
       "result": {
         "type": "string"
       }
+    },
+    {
+      "description": "Chuyển đổi số tiền thành chữ tiếng Việt - Đô la Mỹ (USD)",
+      "id": "USD",
+      "name": "USD",
+      "parameters": [
+        {
+          "description": "Số tiền cần chuyển đổi",
+          "name": "number",
+          "type": "number"
+        }
+      ],
+      "result": {
+        "type": "string"
+      }
+    },
+    {
+      "description": "Chuyển đổi số tiền thành chữ tiếng Việt - Đô la Canada (CAD)",
+      "id": "CAD",
+      "name": "CAD",
+      "parameters": [
+        {
+          "description": "Số tiền cần chuyển đổi",
+          "name": "number",
+          "type": "number"
+        }
+      ],
+      "result": {
+        "type": "string"
+      }
+    },
+    {
+      "description": "Chuyển đổi số tiền thành chữ tiếng Việt - Nhân dân tệ (CNY)",
+      "id": "CNY",
+      "name": "CNY",
+      "parameters": [
+        {
+          "description": "Số tiền cần chuyển đổi",
+          "name": "number",
+          "type": "number"
+        }
+      ],
+      "result": {
+        "type": "string"
+      }
+    },
+    {
+      "description": "Chuyển đổi số tiền thành chữ tiếng Việt - Yên Nhật (JPY)",
+      "id": "JPY",
+      "name": "JPY",
+      "parameters": [
+        {
+          "description": "Số tiền cần chuyển đổi",
+          "name": "number",
+          "type": "number"
+        }
+      ],
+      "result": {
+        "type": "string"
+      }
+    },
+    {
+      "description": "Chuyển đổi số tiền thành chữ tiếng Việt - Won Hàn Quốc (KRW)",
+      "id": "KRW",
+      "name": "KRW",
+      "parameters": [
+        {
+          "description": "Số tiền cần chuyển đổi",
+          "name": "number",
+          "type": "number"
+        }
+      ],
+      "result": {
+        "type": "string"
+      }
+    },
+    {
+      "description": "Chuyển đổi số tiền thành chữ tiếng Việt - Bạt Thái Lan (THB)",
+      "id": "THB",
+      "name": "THB",
+      "parameters": [
+        {
+          "description": "Số tiền cần chuyển đổi",
+          "name": "number",
+          "type": "number"
+        }
+      ],
+      "result": {
+        "type": "string"
+      }
+    },
+    {
+      "description": "Chuyển đổi số tiền thành chữ tiếng Việt - Đô la Singapore (SGD)",
+      "id": "SGD",
+      "name": "SGD",
+      "parameters": [
+        {
+          "description": "Số tiền cần chuyển đổi",
+          "name": "number",
+          "type": "number"
+        }
+      ],
+      "result": {
+        "type": "string"
+      }
     }
   ]
 }
