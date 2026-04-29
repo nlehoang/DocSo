@@ -71,23 +71,12 @@ function docSoTienVND(number) {
     }
 }
 
-/**
- * Test function to check if runtime is working
- * @customfunction PING
- * @returns {string}
- */
-function ping() {
-    return "PONG";
-}
-
 // Export các function cho Excel Custom Functions
 if (typeof CustomFunctions !== "undefined") {
     CustomFunctions.associate("VND", docSoTienVND);
-    CustomFunctions.associate("PING", ping);
 }
 
 // Export global scope
 if (typeof window !== "undefined") {
     window.docSoTienVND = docSoTienVND;
-    window.ping = ping;
 }

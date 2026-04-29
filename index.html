@@ -1,21 +1,30 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Đọc Số Ra Chữ</title>
     <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
-    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css" />
+    <link rel="stylesheet"
+        href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css" />
     <link rel="stylesheet" href="taskpane.css" />
 </head>
+
 <body class="ms-font-m ms-welcome ms-Fabric">
     <header class="ms-welcome__header ms-bgColor-neutralLighter">
         <h1 class="ms-font-su">Đọc Số</h1>
     </header>
     <main id="app-body" class="ms-welcome__main" style="display: none;">
         <h2 class="ms-font-xl">Công cụ Kế Toán</h2>
-        <p class="ms-font-m">Bôi đen cột chứa số tiền, sau đó bấm nút bên dưới. Kết quả sẽ được ghi vào cột bên phải.</p>
+        <li>
+            <p class="ms-font-m" Cách 1: Sử dụng công thức=DOCSO.VND() để chuyển số tiền sang bằng chữ tiếng Việt.</p>
+        </li>
+        <li>
+            <p class="ms-font-m" Cách 2: Nếu cần chuyển đổi cả 1 cột số liệu thì bôi đen cột chứa số tiền, sau đó bấm
+                nút bên dưới. Kết quả sẽ được ghi vào cột bên phải.</p>
+        </li>
         <button id="run" class="ms-Button ms-Button--primary">
             <span class="ms-Button-label">Chuyển sang chữ</span>
         </button>
@@ -26,4 +35,5 @@
     </div>
     <script type="text/javascript" src="taskpane.js"></script>
 </body>
+
 </html>
