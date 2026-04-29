@@ -10,7 +10,7 @@
   <Version>1.0.0.2</Version>
   <ProviderName>IT Admin Dept</ProviderName>
   <DefaultLocale>vi-VN</DefaultLocale>
-  <DisplayName DefaultValue="Đọc Số VNĐ (Bản Mới)" />
+  <DisplayName DefaultValue="Đọc Số Tiền (Bản Mới)" />
   <Description DefaultValue="Công cụ tự động chuyển đổi số tiền thành chữ tiếng Việt." />
   <IconUrl DefaultValue="https://nlehoang.github.io/DocSo/assets/icon-32.png" />
   <HighResolutionIconUrl DefaultValue="https://nlehoang.github.io/DocSo/assets/icon-64.png" />
@@ -92,16 +92,16 @@
         <bt:Url id="Functions.Metadata.Url" DefaultValue="https://nlehoang.github.io/DocSo/functions.json" />
       </bt:Urls>
       <bt:ShortStrings>
-        <bt:String id="GetStarted.Title" DefaultValue="Đọc Số VNĐ" />
+        <bt:String id="GetStarted.Title" DefaultValue="Đọc Số" />
         <bt:String id="Tab.Label" DefaultValue="Công cụ Kế toán" />
         <bt:String id="Group.Label" DefaultValue="Công cụ Kế toán" />
-        <bt:String id="Button.Label" DefaultValue="Đọc Số VNĐ" />
+        <bt:String id="Button.Label" DefaultValue="Đọc Số" />
         <bt:String id="Button.Supertip.Title" DefaultValue="Chuyển Số Sang Chữ" />
         <bt:String id="Functions.Namespace" DefaultValue="DOCSO" />
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="GetStarted.Description" DefaultValue="Bôi đen cột số tiền rồi bấm nút để chuyển thành chữ tiếng Việt." />
-        <bt:String id="Button.Supertip.Description" DefaultValue="Mở bảng điều khiển để dịch số thành chữ tiếng Việt." />
+        <bt:String id="GetStarted.Description" DefaultValue="Chuyển số tiền thành chữ tiếng Việt." />
+        <bt:String id="Button.Supertip.Description" DefaultValue="Mở bảng điều khiển để chuyển số thành chữ tiếng Việt." />
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>
