@@ -71,5 +71,15 @@ function docSoTienVND(number) {
     }
 }
 
+/**
+ * Test function to check if runtime is working
+ * @customfunction
+ * @returns {string}
+ */
+function testPing() {
+    return "PONG";
+}
+
 // Đăng ký custom function với Excel
 CustomFunctions.associate("VND", docSoTienVND);
+CustomFunctions.associate("PING", testPing);
