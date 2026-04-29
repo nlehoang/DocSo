@@ -1,0 +1,32 @@
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    padding: 15px;
+    margin: 0;
+}
+
+#app-body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+p {
+    color: #333;
+    line-height: 1.5;
+}
+
+.ms-Button {
+    background-color: #107c41;
+    /* Màu xanh lá của Excel */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 15px;
+    border-radius: 4px;
+}
+
+.ms-Button:hover {
+    background-color: #0b5a2f;
+}
