@@ -5,6 +5,10 @@
  * @returns {string} Chuỗi văn bản tương ứng
  */
 function docSoTienVND(number) {
+    if (typeof number !== "number" || isNaN(number)) {
+        throw new CustomFunctions.Error(CustomFunctions.ErrorCode.invalidValue, "Đầu vào không hợp lệ");
+    }
+
     if (number === 0) return "Không đồng";
 
     var units = ["không", "một", "hai", "ba", "bốn", "năm", "sáu", "bảy", "tám", "chín"];
@@ -63,5 +67,8 @@ function docSoTienVND(number) {
     return result.charAt(0).toUpperCase() + result.slice(1) + " đồng";
 }
 
-// Đăng ký custom function với Excel
-CustomFunctions.associate("VND", docSoTienVND);
+// Ensure the Office.js runtime is initialized
+Office.onReady(function () {
+    // Đăng ký custom function với Excel
+    CustomFunctions.associate("VND", docSoTienVND);
+});
