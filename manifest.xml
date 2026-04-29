@@ -59,6 +59,7 @@
                   </Action>
                 </Control>
               </Group>
+              <Label resid="Tab.Label" />
             </CustomTab>
           </ExtensionPoint>
         </DesktopFormFactor>
@@ -75,6 +76,7 @@
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="GetStarted.Title" DefaultValue="Đọc Số VNĐ" />
+        <bt:String id="Tab.Label" DefaultValue="Công cụ Kế toán" />
         <bt:String id="Group.Label" DefaultValue="Công cụ Kế toán" />
         <bt:String id="Button.Label" DefaultValue="Đọc Số VNĐ" />
         <bt:String id="Button.Supertip.Title" DefaultValue="Chuyển Số Sang Chữ" />
