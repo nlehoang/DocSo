@@ -99,7 +99,7 @@ function docSoTienVND(number) {
             result += " phẩy " + decimalWords;
         }
 
-        result += " đồng";
+        result += " đồng chẵn.";
 
         if (isNegative) {
             result = "Âm " + result;
@@ -145,7 +145,7 @@ function docSoUSD(number) {
             result += " phẩy " + decimalWords;
         }
 
-        result += " đô la Mỹ";
+        result += " đô la Mỹ.";
 
         if (isNegative) {
             result = "Âm " + result;
@@ -191,7 +191,7 @@ function docSoCAD(number) {
             result += " phẩy " + decimalWords;
         }
 
-        result += " đô la Canada";
+        result += " đô la Canada.";
 
         if (isNegative) {
             result = "Âm " + result;
@@ -237,7 +237,7 @@ function docSoCNY(number) {
             result += " phẩy " + decimalWords;
         }
 
-        result += " nhân dân tệ";
+        result += " nhân dân tệ.";
 
         if (isNegative) {
             result = "Âm " + result;
@@ -283,7 +283,7 @@ function docSoJPY(number) {
             result += " phẩy " + decimalWords;
         }
 
-        result += " yên Nhật";
+        result += " yên Nhật.";
 
         if (isNegative) {
             result = "Âm " + result;
@@ -329,7 +329,7 @@ function docSoKRW(number) {
             result += " phẩy " + decimalWords;
         }
 
-        result += " won Hàn Quốc";
+        result += " won Hàn Quốc.";
 
         if (isNegative) {
             result = "Âm " + result;
@@ -375,7 +375,7 @@ function docSoTHB(number) {
             result += " phẩy " + decimalWords;
         }
 
-        result += " bạt Thái Lan";
+        result += " bạt Thái Lan.";
 
         if (isNegative) {
             result = "Âm " + result;
@@ -421,7 +421,7 @@ function docSoSGD(number) {
             result += " phẩy " + decimalWords;
         }
 
-        result += " đô la Singapore";
+        result += " đô la Singapore.";
 
         if (isNegative) {
             result = "Âm " + result;
